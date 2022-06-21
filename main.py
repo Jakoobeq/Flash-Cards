@@ -6,18 +6,21 @@ BACKGROUND_COLOR = "#B1DDC6"
 
 french_words = french.read_csv("french_words.csv")
 french_dict = french_words.to_dict("records")
+choice_fr = {}
 
 
 def random_word():
+    global choice_fr
     choice_fr = random.choice(french_dict)
-    word_label.config(text=f"{choice_fr['French']}")
-    print(choice_fr)
-
+    title_label.config(text="Francois", bg="white")
+    word_label.config(text=f"{choice_fr['French']}", bg="white")
+    canvas.itemconfig(fr_image, image=front_card)
 
 
 
 def change_card():
-    title_label.config(text="English")
+    title_label.config(text="English", bg=BACKGROUND_COLOR)
+    word_label.config(text=f"{choice_fr['English']}", bg=BACKGROUND_COLOR)
     canvas.itemconfig(fr_image, image=back_card)
 
 
